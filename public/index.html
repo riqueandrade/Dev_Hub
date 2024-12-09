@@ -6,14 +6,22 @@
     <title>Dev Hub - Plataforma de Cursos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<body class="dark-theme">
+    <div class="noise-overlay"></div>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="/">
-                <i class="bi bi-code-square me-2"></i>
-                Dev Hub
+                <div class="brand-icon me-2">
+                    <i class="bi bi-code-square"></i>
+                </div>
+                <span class="brand-text">Dev Hub</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -31,161 +39,224 @@
         </div>
     </nav>
 
-    <header class="hero-section text-white text-center">
-        <div class="hero-overlay"></div>
-        <div class="container position-relative">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <h1 class="display-4 fw-bold mb-4">Aprenda. Desenvolva. Conquiste.</h1>
-                    <p class="lead mb-5">Transforme sua carreira com os melhores cursos de programação. Aprenda no seu ritmo, com projetos práticos e suporte da comunidade.</p>
-                    <div class="d-flex justify-content-center gap-3">
-                        <a class="btn btn-primary btn-lg" href="/cursos.html">
-                            <i class="bi bi-collection-play me-2"></i>
-                            Explorar Cursos
-                        </a>
-                        <a class="btn btn-outline-light btn-lg" href="/registro.html">
-                            <i class="bi bi-person-plus me-2"></i>
+    <header class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <div class="glowing-circle"></div>
+                    <h1 class="hero-title">
+                        <span class="gradient-text">Aprenda.</span>
+                        <span class="gradient-text">Desenvolva.</span>
+                        <span class="gradient-text">Conquiste.</span>
+                    </h1>
+                    <p class="hero-subtitle">Domine as tecnologias mais demandadas do mercado com nossa plataforma imersiva de aprendizado.</p>
+                    <div class="hero-buttons">
+                        <a href="/cursos.html" class="btn btn-primary btn-glow">
+                            <i class="bi bi-rocket-takeoff"></i>
                             Começar Agora
                         </a>
+                        <a href="/registro.html" class="btn btn-outline-light">
+                            <i class="bi bi-person-plus"></i>
+                            Criar Conta
+                        </a>
+                    </div>
+                    <div class="tech-stack">
+                        <img src="/images/tech/javascript.svg" alt="JavaScript" class="tech-icon">
+                        <img src="/images/tech/react.svg" alt="React" class="tech-icon">
+                        <img src="/images/tech/nodejs.svg" alt="Node.js" class="tech-icon">
+                        <img src="/images/tech/python.svg" alt="Python" class="tech-icon">
+                        <img src="/images/tech/typescript.svg" alt="TypeScript" class="tech-icon">
+                        <img src="/images/tech/docker.svg" alt="Docker" class="tech-icon">
+                    </div>
+                </div>
+                <div class="col-lg-6 hero-visual">
+                    <div class="code-window">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="code-title">exemplo.js</div>
+                        </div>
+                        <div class="code-content">
+                            <pre><code class="language-javascript">
+class DevHub {
+    constructor() {
+        this.skills = []
+        this.success = true
+    }
+
+    async learn(technology) {
+        try {
+            await this.practice(technology)
+            this.skills.push(technology)
+            return "Domínio conquistado! 🚀"
+        } catch (error) {
+            return "Tente novamente! 💪"
+        }
+    }
+
+    practice(technology) {
+        return new Promise(resolve => {
+            console.log("Praticando...")
+            setTimeout(resolve, 1000)
+        })
+    }
+}
+
+const dev = new DevHub()
+dev.learn("React").then(console.log)
+                            </code></pre>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="features-section py-5">
+    <section class="features-section">
         <div class="container">
+            <div class="section-header text-center">
+                <h2 class="gradient-text">Por que escolher o Dev Hub?</h2>
+                <p class="section-subtitle">Desenvolvido por devs, para devs</p>
+            </div>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="feature-card text-center p-4">
-                        <i class="bi bi-laptop feature-icon"></i>
-                        <h3 class="mt-4">Aprenda na Prática</h3>
-                        <p>Projetos reais e desafios práticos para fixar o conhecimento</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <h3>Projetos Reais</h3>
+                        <p>Aprenda construindo aplicações do mundo real com as melhores práticas do mercado.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-card text-center p-4">
-                        <i class="bi bi-people feature-icon"></i>
-                        <h3 class="mt-4">Comunidade Ativa</h3>
-                        <p>Conecte-se com outros desenvolvedores e aprenda juntos</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h3>Comunidade Ativa</h3>
+                        <p>Conecte-se com outros desenvolvedores, compartilhe conhecimento e cresça junto.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-card text-center p-4">
-                        <i class="bi bi-award feature-icon"></i>
-                        <h3 class="mt-4">Certificação</h3>
-                        <p>Receba certificados reconhecidos pelo mercado</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                        <h3>Evolução Contínua</h3>
+                        <p>Acompanhe seu progresso e receba feedback personalizado em tempo real.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="courses-section py-5 bg-light">
+    <section class="courses-section">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold">Cursos em Destaque</h2>
-                <p class="lead text-muted">Comece sua jornada com nossos cursos mais populares</p>
+            <div class="section-header text-center">
+                <h2 class="gradient-text">Cursos em Destaque</h2>
+                <p class="section-subtitle">Comece sua jornada com nossos cursos mais populares</p>
             </div>
             <div class="row" id="featuredCourses">
                 <!-- Cursos serão carregados dinamicamente -->
             </div>
             <div class="text-center mt-5">
-                <a href="/cursos.html" class="btn btn-outline-primary btn-lg">Ver Todos os Cursos</a>
+                <a href="/cursos.html" class="btn btn-outline-primary btn-glow">Ver Todos os Cursos</a>
             </div>
         </div>
     </section>
 
-    <section class="testimonials-section py-5">
+    <section class="stats-section">
         <div class="container">
-            <h2 class="text-center mb-5">O Que Dizem Nossos Alunos</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" 
-                                 class="testimonial-img rounded-circle me-3" alt="Aluno">
-                            <div>
-                                <h5 class="mb-0">João Silva</h5>
-                                <small class="text-muted">Desenvolvedor Frontend</small>
-                            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <div class="stat-number gradient-text">
+                            <span class="counter">1000</span>+
                         </div>
-                        <p class="testimonial-text">"Os cursos são incríveis! Consegui meu primeiro emprego como dev após completar a trilha de frontend."</p>
+                        <div class="stat-label">Alunos Ativos</div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" 
-                                 class="testimonial-img rounded-circle me-3" alt="Aluna">
-                            <div>
-                                <h5 class="mb-0">Maria Santos</h5>
-                                <small class="text-muted">Desenvolvedora Full Stack</small>
-                            </div>
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <div class="stat-number gradient-text">
+                            <span class="counter">50</span>+
                         </div>
-                        <p class="testimonial-text">"A qualidade do conteúdo e o suporte da comunidade fizeram toda a diferença no meu aprendizado."</p>
+                        <div class="stat-label">Cursos Disponíveis</div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61" 
-                                 class="testimonial-img rounded-circle me-3" alt="Aluno">
-                            <div>
-                                <h5 class="mb-0">Pedro Oliveira</h5>
-                                <small class="text-muted">Desenvolvedor Backend</small>
-                            </div>
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <div class="stat-number gradient-text">
+                            <span class="counter">95</span>%
                         </div>
-                        <p class="testimonial-text">"Os projetos práticos me ajudaram a construir um portfólio sólido. Recomendo a todos!"</p>
+                        <div class="stat-label">Taxa de Satisfação</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta-section text-white text-center py-5">
-        <div class="cta-overlay"></div>
-        <div class="container position-relative">
-            <h2 class="display-5 fw-bold mb-4">Pronto para Começar?</h2>
-            <p class="lead mb-4">Junte-se a milhares de desenvolvedores que já estão transformando suas carreiras</p>
-            <a href="/registro.html" class="btn btn-primary btn-lg">Comece Gratuitamente</a>
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h2 class="gradient-text">Pronto para começar?</h2>
+                        <p>Junte-se a milhares de desenvolvedores que já estão transformando suas carreiras.</p>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a href="/registro.html" class="btn btn-primary btn-glow btn-lg">
+                            <i class="bi bi-rocket-takeoff"></i>
+                            Comece Gratuitamente
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer class="bg-dark text-white py-5">
+    <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5 class="mb-3">Dev Hub</h5>
-                    <p>Transformando carreiras através da educação em tecnologia.</p>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">
+                        <div class="brand-icon">
+                            <i class="bi bi-code-square"></i>
+                        </div>
+                        <h5>Dev Hub</h5>
+                    </div>
+                    <p class="footer-description">Transformando carreiras através da educação em tecnologia.</p>
                     <div class="social-links">
-                        <a href="#" class="text-white me-3"><i class="bi bi-github"></i></a>
-                        <a href="#" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-github"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
                     </div>
                 </div>
-                <div class="col-md-2 mb-4">
-                    <h5 class="mb-3">Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="/cursos.html" class="text-white-50">Cursos</a></li>
-                        <li><a href="#" class="text-white-50">Blog</a></li>
-                        <li><a href="#" class="text-white-50">Sobre</a></li>
-                        <li><a href="#" class="text-white-50">Contato</a></li>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Plataforma</h5>
+                    <ul class="footer-links">
+                        <li><a href="/cursos.html">Cursos</a></li>
+                        <li><a href="#">Comunidade</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Sobre</a></li>
                     </ul>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <h5 class="mb-3">Cursos</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white-50">Frontend</a></li>
-                        <li><a href="#" class="text-white-50">Backend</a></li>
-                        <li><a href="#" class="text-white-50">Mobile</a></li>
-                        <li><a href="#" class="text-white-50">DevOps</a></li>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Recursos</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Documentação</a></li>
+                        <li><a href="#">Tutoriais</a></li>
+                        <li><a href="#">Roadmaps</a></li>
+                        <li><a href="#">FAQ</a></li>
                     </ul>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <h5 class="mb-3">Newsletter</h5>
-                    <p class="text-white-50">Receba novidades e atualizações</p>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h5>Newsletter</h5>
+                    <p>Receba novidades e atualizações sobre tecnologia.</p>
                     <form class="newsletter-form">
                         <div class="input-group">
                             <input type="email" class="form-control" placeholder="Seu email">
@@ -196,14 +267,20 @@
                     </form>
                 </div>
             </div>
-            <hr class="my-4">
-            <div class="text-center text-white-50">
+            <hr class="footer-divider">
+            <div class="footer-bottom">
                 <p>&copy; 2024 Dev Hub. Todos os direitos reservados.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Privacidade</a>
+                    <a href="#">Cookies</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
     <script src="/js/auth.js"></script>
     <script src="/js/main.js"></script>
 </body>
