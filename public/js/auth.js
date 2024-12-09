@@ -34,7 +34,7 @@ async function login(email, password) {
             throw new Error(data.message);
         }
 
-        setToken(data.token);
+        localStorage.setItem('devhub_token', data.token);
         window.location.href = '/';
     } catch (error) {
         throw error;
@@ -57,7 +57,7 @@ async function register(name, email, password) {
             throw new Error(data.message);
         }
 
-        setToken(data.token);
+        localStorage.setItem('devhub_token', data.token);
         window.location.href = '/';
     } catch (error) {
         throw error;
@@ -81,6 +81,8 @@ function setupAuthPage() {
 function setupTabs() {
     const tabBtns = document.querySelectorAll('.tab-btn');
     const forms = document.querySelectorAll('.auth-form');
+    const headerTitle = document.querySelector('.auth-header h1');
+    const headerSubtitle = document.querySelector('.auth-header p');
     
     tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -89,6 +91,15 @@ function setupTabs() {
             // Atualizar botões
             tabBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+            
+            // Atualizar texto do cabeçalho
+            if (tab === 'register') {
+                headerTitle.textContent = 'Criar Conta';
+                headerSubtitle.textContent = 'Junte-se à nossa comunidade de desenvolvedores';
+            } else {
+                headerTitle.textContent = 'Bem-vindo';
+                headerSubtitle.textContent = 'Entre na sua conta ou crie uma nova';
+            }
             
             // Atualizar formulários
             forms.forEach(form => {
@@ -126,8 +137,6 @@ function setupPasswordToggles() {
 // Força da senha
 function setupPasswordStrength() {
     const passwordInput = document.getElementById('registerPassword');
-    if (!passwordInput) return;
-
     const strengthBar = document.querySelector('.strength-progress');
     const strengthText = document.querySelector('.strength-text');
     
@@ -161,7 +170,7 @@ function setupPasswordStrength() {
     });
 }
 
-// Manipulaç��o dos formulários
+// Manipulação dos formulários
 function setupForms() {
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
