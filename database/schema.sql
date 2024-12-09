@@ -1,8 +1,5 @@
 -- Criar banco de dados
-CREATE DATABASE IF NOT EXISTS devhub
-    CHARACTER SET utf8mb4
-    COLLATE utf8mb4_unicode_ci;
-
+CREATE DATABASE IF NOT EXISTS devhub;
 USE devhub;
 
 -- Criar tabela de usuários
@@ -11,15 +8,8 @@ CREATE TABLE IF NOT EXISTS users (
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    avatar_url VARCHAR(255),
-    bio TEXT,
-    github_url VARCHAR(255),
-    linkedin_url VARCHAR(255),
-    role ENUM('student', 'instructor', 'admin') DEFAULT 'student',
-    is_active BOOLEAN DEFAULT true,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 -- Criar tabela de categorias
 CREATE TABLE IF NOT EXISTS categories (

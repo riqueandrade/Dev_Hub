@@ -13,35 +13,50 @@ async function fetchWithAuth(url, options = {}) {
 async function loadFeaturedCourses() {
     try {
         const response = await fetch('/api/courses/featured');
-        const courses = await response.json();
+        if (!response.ok) {
+            throw new Error('Erro ao carregar cursos');
+        }
         
-        const featuredCoursesElement = document.getElementById('featuredCourses');
-        if (!featuredCoursesElement) return;
+        const courses = await response.json();
+        const coursesContainer = document.getElementById('featuredCourses');
+        if (!coursesContainer || !Array.isArray(courses)) {
+            console.error('Container não encontrado ou resposta inválida');
+            return;
+        }
 
-        featuredCoursesElement.innerHTML = courses
-            .slice(0, 3)
-            .map(course => `
-                <div class="col-md-4 mb-4">
-                    <div class="course-card">
-                        <div class="course-image" style="background-image: url('${course.image}')">
-                            <div class="course-overlay">
-                                <span class="course-level">${course.level}</span>
-                            </div>
+        coursesContainer.innerHTML = courses.map(course => `
+            <div class="col-md-4 mb-4">
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('${course.image || '/images/courses/default.jpg'}')">
+                        <div class="course-overlay">
+                            <span class="course-level">${course.level || 'Iniciante'}</span>
                         </div>
-                        <div class="course-content">
-                            <h3>${course.title}</h3>
-                            <p>${course.description}</p>
-                            <div class="course-meta">
-                                <span><i class="bi bi-clock"></i> ${course.duration}</span>
-                                <span><i class="bi bi-people"></i> ${course.students} alunos</span>
-                            </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>${course.title}</h3>
+                        <p>${course.description || 'Descrição não disponível'}</p>
+                        <div class="course-meta">
+                            <span><i class="bi bi-clock"></i> ${course.duration || '2h'}</span>
+                            <span><i class="bi bi-people"></i> ${course.students} alunos</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="course-category">${course.category}</span>
                             <a href="/curso.html?id=${course.id}" class="btn btn-primary btn-sm">Ver Curso</a>
                         </div>
                     </div>
                 </div>
-            `).join('');
+            </div>
+        `).join('');
     } catch (error) {
         console.error('Erro ao carregar cursos:', error);
+        const coursesContainer = document.getElementById('featuredCourses');
+        if (coursesContainer) {
+            coursesContainer.innerHTML = `
+                <div class="col-12 text-center">
+                    <p class="text-muted">Não foi possível carregar os cursos no momento. Tente novamente mais tarde.</p>
+                </div>
+            `;
+        }
     }
 }
 

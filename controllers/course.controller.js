@@ -21,6 +21,15 @@ exports.getAllCourses = async (req, res) => {
     }
 };
 
+exports.getFeaturedCourses = async (req, res) => {
+    try {
+        const courses = await Course.findFeatured();
+        res.json(courses);
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao buscar cursos em destaque' });
+    }
+};
+
 exports.getCourseById = async (req, res) => {
     try {
         const course = await Course.findById(req.params.id);

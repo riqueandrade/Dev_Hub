@@ -4,6 +4,7 @@ const courseController = require('../controllers/course.controller');
 const authMiddleware = require('../middlewares/auth.middleware');
 
 router.get('/', courseController.getAllCourses);
+router.get('/featured', courseController.getFeaturedCourses);
 router.get('/:id', courseController.getCourseById);
 
 // Rotas protegidas
