@@ -84,29 +84,18 @@
 class DevHub {
     constructor() {
         this.skills = []
-        this.success = true
     }
 
-    async learn(technology) {
-        try {
-            await this.practice(technology)
-            this.skills.push(technology)
-            return "Domínio conquistado! 🚀"
-        } catch (error) {
-            return "Tente novamente! 💪"
-        }
-    }
-
-    practice(technology) {
-        return new Promise(resolve => {
-            console.log("Praticando...")
-            setTimeout(resolve, 1000)
-        })
+    async learn(tech) {
+        await this.practice(tech)
+        this.skills.push(tech)
+        return "🚀 Sucesso!"
     }
 }
 
 const dev = new DevHub()
-dev.learn("React").then(console.log)
+dev.learn("React")
+    .then(msg => console.log(msg))
                             </code></pre>
                         </div>
                     </div>
@@ -282,6 +271,6 @@ dev.learn("React").then(console.log)
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
     <script src="/js/auth.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="/js/index.js"></script>
 </body>
 </html> 
